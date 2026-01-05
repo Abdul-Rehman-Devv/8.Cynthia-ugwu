@@ -69,3 +69,19 @@ font-size: 1.2vw;
 text-align: right;
 margin-top: 0.5vw;
 }
+#mainFooter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+#mainFooter a{
+    text-decoration: none;
+}
+#iconSet{
+    display: flex;
+    
+}
+#iconSet .circle{
+    background-color: black;
+}

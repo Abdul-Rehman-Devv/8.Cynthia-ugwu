@@ -4,8 +4,12 @@
   font-family: 'General Sans';
   box-sizing: border-box;
   color: #ffff;
+  background-color: #000000;
 }
-html,
+.hide-scrollbar::-webkit-scrollbar {
+  /* For Chrome, Safari, and Opera */
+  display: none;
+}
 body {
   width: 100%;
   height: 100%;
@@ -17,12 +21,12 @@ body {
   width: 100%;
   height: 100vh;
   background-color: black;
-  padding: 0px 40px;
+  padding: 0px 30px;
 }
 #nav {
   width: 100%;
   display: flex;
-  padding: 30px;
+  padding: 20px;
   align-items: center;
   justify-content: space-between;
 }
@@ -38,14 +42,14 @@ body {
   text-transform: uppercase;
   font-weight: 900;
   opacity: 0.6;
-  line-height: 1;
-  margin-left: 50px;
+  line-height: 0.9;
+  margin-left: 10px;
 }
 #heading {
   margin-top: 30px;
 }
 #heading #secondH1 {
-  margin-left: 200px;
+  margin-left: 190px;
 }
 .blocktext {
   width: fit-content;
@@ -106,6 +110,7 @@ body {
     height: 100vh;
     background-color: black;
     padding-top: 200px;
+    padding-left: 50px;
 }
 #second .elem{
     width: 100%;
@@ -115,6 +120,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 .elem h1{
     text-transform: uppercase;
@@ -124,4 +130,106 @@ body {
 .elemlast{
     border-bottom: 1px solid rgb(150, 150, 150);
 
+}
+.elem img {
+  position: absolute;
+  z-index: 999;
+  height: 140%;
+  /* opacity: 0; */
+  display: none;
+}
+#about{
+  width: 100%;
+  background-color: black;
+  padding: 10vw 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  padding-left: 25vw;
+  
+}
+#about img{
+  width: 230px;
+  /* padding-bottom: 110px; */
+}
+#textabout{
+  width: 25rem;
+  /* background-color: red; */
+}
+#textabout h5{
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+#textabout p{
+  line-height: 1.5;
+  margin-bottom: 15px ;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+
+}
+#textabout a {
+  border: 1px solid white;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 10px 22px;
+  
+}
+#textabout a :hover{
+  background-color: #ffff;
+  color: black;
+  text-decoration: underline;
+}
+#subscribe{
+  padding: 20px 30px;
+  background-color: #000000;
+  width: 100%;
+  padding-bottom: 7vw;
+}
+#subscribe h5{
+  opacity: 0.6;
+  font-size: 0.8em;
+  /* font-weight: 600; */
+  text-transform: uppercase;
+}
+#subscribe a{
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+#footer{
+  display: flex;
+ justify-content: space-between;
+ align-items: center;
+ text-transform: uppercase;
+ padding: 20px 30px;
+ 
+}
+.footerLeft{
+  display: flex;
+  padding-left: 15px;
+  gap: 20px;
+}
+.footerLeft h4{
+font-weight: 500;
+font-size: 0.9em;
+  
+}
+.footerRight{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 25px;
+  gap: 35px;
+
+}
+.footerRight a{
+  font-weight: 500;
+ 
+  font-size: 1em;
+  text-decoration: none;
 }

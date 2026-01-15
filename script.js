@@ -8,9 +8,16 @@ function firstPageAnim() {
     tl.from("#nav",{
         y: '-10',
         opacity: 0 ,
-        duration:2,
+        duration:1.5
+        ,
         ease: Expo.easeInOut 
 
+    })
+    .to(".boundingelem",{
+        y:0,
+        ease: Expo.easeInOut, 
+        duration:2,
+        stagger: .2
     })
 }
 function circleMouseFollower(){

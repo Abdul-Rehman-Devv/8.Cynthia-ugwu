@@ -135,7 +135,7 @@ transform: translateY(115%);
     height: 100%;
     background-color: black;
     padding-top: 200px;
-    padding-left: 50px;
+    /* padding-left: 50px; */
 }
 #second .elem{
     width: 100%;
@@ -160,8 +160,8 @@ transform: translateY(115%);
   position: absolute;
   z-index: 999;
   height: 140%;
-  /* opacity: 0; */
-  display: none;
+  opacity: 0;
+  /* display: none; */
 }
 #about{
   width: 100%;

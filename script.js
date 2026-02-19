@@ -59,15 +59,37 @@ function circleMouseFollower(Xscale, Yscale) {
 }
 circleSkew()
 circleMouseFollower()
-firstPageAnim()
+firstPageAnim() 
+console.log(document.querySelectorAll(".elem"))
+document.querySelectorAll(".elem").forEach(function (elem) {
+  var rotate = 0; 
 
-document.querySelectorAll(".elem").forEach(function (elem){
-  elem.addEventListener("mousemove",function(details){
-   gsap.to(elem.querySelector("img"), {
-    opacity:1,
-    ease: Power1.out,
-    duration:0.3
-   });
-  
-  })
+  elem.addEventListener("mousemove", function (details) {
+    var img = elem.querySelector("img");
+    var imgWidth = img.offsetWidth;
+    var imgHeight = img.offsetHeight;
+    var centerX = details.clientX - imgWidth / 3;
+    var centerY = details.clientY - imgHeight ;
+
+   
+    var diff = details.clientY - elem.getBoundingClientRect().top;
+    var diffrot = details.clientX - rotate;
+    rotate = details.clientX;
+
+    gsap.to(img, {
+      opacity: 1,
+      ease: "power1.out",
+      duration: 0.3,
+      top: centerY,
+      left: centerX,
+      rotate: gsap.utils.clamp(-20, 20, diffrot) 
+    });
+  });
+
+  elem.addEventListener("mouseleave", function () {
+    gsap.to(elem.querySelector("img"), {
+      opacity: 0,
+      duration: 0.5,
+    });
+  });
 });

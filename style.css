@@ -38,6 +38,8 @@ html,body {
   padding: 20px;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 10;
 }
 #nav a {
   color: white;
@@ -45,6 +47,101 @@ html,body {
   font-size: 18px;
   font-weight: 500;
 }
+.nav-menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 11;
+}
+.nav-menu-btn:hover {
+  opacity: 0.8;
+}
+
+/* Navigation overlay */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
+}
+.nav-overlay.active {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.nav-overlay .nav-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10000;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+.nav-overlay .nav-close:hover {
+  opacity: 0.8;
+}
+.nav-overlay .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+.nav-overlay .nav-link {
+  font-size: 4vw;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  position: relative;
+  color: #fff;
+}
+.nav-overlay .nav-link:hover {
+  opacity: 1;
+  transform: translateX(20px);
+}
+.nav-overlay .nav-link::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+.nav-overlay .nav-link:hover::before {
+  width: 30px;
+}
+@media (max-width: 768px) {
+  .nav-overlay .nav-link {
+    font-size: 8vw;
+  }
+}
+
 .bounding{
   width: fit-content;
   overflow: hidden;
@@ -258,4 +355,21 @@ font-size: 0.9em;
  
   font-size: 1em;
   text-decoration: none;
+}
+
+.elem a.elemLink {
+  position: absolute;
+  inset: 0;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  z-index: 1;
+}
+.elem a.elemLink + img {
+  z-index: 0;
+}
+.elem h1,
+.elem h5 {
+  position: relative;
+  z-index: 2;
 }

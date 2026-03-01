@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience & Projects | Abdul Rehman</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="experience.css" />
+  </head>
+  <body>
+    <div id="minicircle"></div>
+    <div id="main">
+      <div id="hero">
+        <div id="nav">
+          <a href="index.html">Abdul Rehman</a>
+          <a href="index.html"> <i class="ri-arrow-left-line"></i></a>
+        </div>
+      </div>
+
+      <div id="experiencePage">
+        <!-- Fullstack / Experience intro -->
+        <section class="pageSection" id="fullstackSection">
+          <h2 class="sectionLabel">Fullstack Developer</h2>
+          <div class="sectionContent">
+            <p>
+              I build and ship full-stack applications from UI to database. I focus on clean APIs, responsive interfaces, and deployment pipelines so products are fast, reliable, and easy to maintain. I'm comfortable owning features end-to-end and collaborating with design and product.
+            </p>
+          </div>
+        </section>
+
+        <!-- Technologies -->
+        <section class="pageSection" id="techSection">
+          <h2 class="sectionLabel">Technologies I Work With</h2>
+          <div class="sectionContent">
+            <p>
+              <strong>Frontend:</strong> HTML, CSS, JavaScript, React, responsive design, and modern tooling. <strong>Backend:</strong> Node.js, REST APIs, and server-side logic. <strong>Data &amp; DevOps:</strong> SQL and NoSQL databases, version control (Git), and basic CI/CD. I keep adding new frameworks and practices as the stack evolves.
+            </p>
+          </div>
+        </section>
+
+        <!-- Project photos gallery -->
+        <section class="pageSection" id="projectsSection">
+          <h2 class="sectionLabel">Projects</h2>
+          <p class="sectionIntro">Projects I've worked on and built from scratch.</p>
+          <div class="projectGallery">
+            <div class="projectCard">
+              <div class="projectImageWrap">
+                <img src="pic/ixperience.png" alt="Project 1" />
+                <div class="projectOverlay">
+                  <h3 class="projectTitle">Project One</h3>
+                  <p class="projectDesc">Short description of the project, stack used, and what you built.</p>
+                </div>
+              </div>
+              <!-- Popup gallery: add/remove <img> tags to customize -->
+              <div class="projectGalleryImages" hidden>
+                <img src="pic/ixperience.png" alt="Screenshot 1" />
+                <img src="pic/headshot-1.jpeg" alt="Screenshot 2" />
+                <img src="pic/headshot-2.jpeg" alt="Screenshot 3" />
+              </div>
+            </div>
+            <div class="projectCard">
+              <div class="projectImageWrap">
+                <img src="pic/projects/project2.jpg" alt="Project 2" onerror="this.src='https://placehold.co/600x400/1a1a1a/666?text=Project+2'" />
+                <div class="projectOverlay">
+                  <h3 class="projectTitle">Project Two</h3>
+                  <p class="projectDesc">Replace with your project title and description. Image: pic/projects/project2.jpg</p>
+                </div>
+              </div>
+              <div class="projectGalleryImages" hidden>
+                <img src="pic/projects/project2.jpg" alt="Screenshot 1" onerror="this.src='https://placehold.co/800x500/1a1a1a/666?text=Project+2+Image+1'" />
+                <img src="pic/projects/project2b.jpg" alt="Screenshot 2" onerror="this.src='https://placehold.co/800x500/1a1a1a/666?text=Project+2+Image+2'" />
+              </div>
+            </div>
+            <div class="projectCard">
+              <div class="projectImageWrap">
+                <img src="pic/projects/project3.jpg" alt="Project 3" onerror="this.src='https://placehold.co/600x400/1a1a1a/666?text=Project+3'" />
+                <div class="projectOverlay">
+                  <h3 class="projectTitle">Project Three</h3>
+                  <p class="projectDesc">Add more cards in the HTML and drop images into pic/projects/.</p>
+                </div>
+              </div>
+              <div class="projectGalleryImages" hidden>
+                <img src="pic/projects/project3.jpg" alt="Screenshot 1" onerror="this.src='https://placehold.co/800x500/1a1a1a/666?text=Project+3+Image+1'" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div id="footer">
+          <div class="footerLeft">
+            <h4>2023 &copy;</h4>
+            <h4 id="footerTime">--:-- PKT</h4>
+          </div>
+          <div class="footerRight">
+            <a href="https://www.linkedin.com/in/abdul-rehman-b0957a24a/">Linkdin</a>
+            <a href="https://github.com/Abdul-Rehman-Devv">Github</a>
+            <a href="https://www.instagram.com/abdulrehman71116/">Instagram</a>
+            <a href="https://www.facebook.com/abdul.rehman.691264/">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project popup: shows multiple images for the clicked project -->
+    <div id="projectModal" class="projectModal" aria-hidden="true">
+      <div class="projectModalOverlay"></div>
+      <div class="projectModalContent">
+        <button type="button" class="projectModalClose" aria-label="Close"><i class="ri-close-line"></i></button>
+        <h3 class="projectModalTitle"></h3>
+        <div class="projectModalImages">
+          <div class="projectModalSlideWrap"></div>
+          <button type="button" class="projectModalPrev" aria-label="Previous"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" class="projectModalNext" aria-label="Next"><i class="ri-arrow-right-s-line"></i></button>
+        </div>
+        <div class="projectModalDots"></div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="experience.js"></script>
+  </body>
+</html>

@@ -59,7 +59,42 @@ function circleMouseFollower(Xscale, Yscale) {
 }
 circleSkew()
 circleMouseFollower()
-firstPageAnim() 
+firstPageAnim()
+
+// Nav overlay: open on MENU +, close on X or overlay
+function initNavOverlay() {
+  var overlay = document.getElementById('nav-overlay')
+  var menuBtn = document.getElementById('navMenuBtn')
+  var closeBtn = document.getElementById('navOverlayClose')
+  if (!overlay || !menuBtn) return
+  menuBtn.addEventListener('click', function (e) {
+    e.preventDefault()
+    e.stopPropagation()
+    overlay.classList.add('active')
+    overlay.setAttribute('aria-hidden', 'false')
+    document.body.style.overflow = 'hidden'
+  })
+  function closeNav() {
+    overlay.classList.remove('active')
+    overlay.setAttribute('aria-hidden', 'true')
+    document.body.style.overflow = ''
+  }
+  if (closeBtn) closeBtn.addEventListener('click', closeNav)
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeNav()
+  })
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) closeNav()
+  })
+  overlay.querySelectorAll('.nav-link').forEach(function (link) {
+    link.addEventListener('click', closeNav)
+  })
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initNavOverlay)
+} else {
+  initNavOverlay()
+} 
 console.log(document.querySelectorAll(".elem"))
 document.querySelectorAll(".elem").forEach(function (elem) {
   var rotate = 0; 
@@ -93,3 +128,14 @@ document.querySelectorAll(".elem").forEach(function (elem) {
     });
   });
 });
+
+// Pakistan time in footer (Asia/Karachi, PKT)
+function updateFooterTime() {
+  var el = document.getElementById('footerTime');
+  if (!el) return;
+  var now = new Date();
+  var timeStr = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: 'numeric', minute: '2-digit', hour12: true });
+  el.textContent = timeStr + ' PKT';
+}
+updateFooterTime();
+setInterval(updateFooterTime, 60000); // update every minute

@@ -1,0 +1,366 @@
+/* Experience / Projects page – same vibe as about, plus project gallery */
+
+#minicircle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+#hero {
+  height: auto;
+  min-height: auto;
+  padding: 0 30px 24px;
+}
+
+#nav h4 {
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+#nav a:hover h4 {
+  opacity: 0.8;
+}
+
+#experiencePage {
+  width: 100%;
+  background-color: #000;
+  padding: 0 5vw 40px;
+}
+
+.pageSection {
+  border-top: 1px solid rgb(150, 150, 150);
+  padding: 4vw 0;
+  max-width: 100%;
+}
+
+.pageSection:first-of-type {
+  padding-top: 6vw;
+}
+
+.sectionLabel {
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5vw;
+  color: #fff;
+}
+
+.sectionContent {
+  max-width: 36rem;
+}
+
+.sectionContent p {
+  line-height: 1.65;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.sectionContent strong {
+  opacity: 0.9;
+}
+
+/* Project gallery */
+#projectsSection .sectionIntro {
+  font-size: 0.8em;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3vw;
+  color: #fff;
+}
+
+#projectsSection .sectionIntro code {
+  font-family: inherit;
+  opacity: 0.8;
+}
+
+.projectGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.projectCard {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #111;
+}
+
+.projectImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.projectImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.projectCard:hover .projectImageWrap img {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay – visible on hover */
+.projectOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  color: #fff;
+}
+
+.projectCard:hover .projectOverlay {
+  opacity: 1;
+}
+
+.projectTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.projectDesc {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.projectCard {
+  cursor: pointer;
+}
+
+/* Project popup modal */
+.projectModal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.projectModal.isOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.projectModalOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+}
+
+.projectModalContent {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: #0a0a0a;
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.projectModalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.2s ease;
+  z-index: 2;
+}
+
+.projectModalClose:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.projectModalTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  padding-right: 48px;
+}
+
+.projectModalImages {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectModalSlideWrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.projectModalSlideWrap img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.projectModalSlideWrap img:not(.isActive) {
+  display: none;
+}
+
+.projectModalPrev,
+.projectModalNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.2s ease;
+  z-index: 1;
+}
+
+.projectModalPrev:hover,
+.projectModalNext:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.projectModalPrev {
+  left: -0.5rem;
+}
+
+.projectModalNext {
+  right: -0.5rem;
+}
+
+.projectModalDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.projectModalDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.projectModalDot.isActive {
+  background: #fff;
+}
+
+.projectModalDot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Hide prev/next when only one image */
+.projectModalContent.singleImage .projectModalPrev,
+.projectModalContent.singleImage .projectModalNext,
+.projectModalContent.singleImage .projectModalDots {
+  display: none;
+}
+
+/* Footer */
+#experiencePage #footer {
+  border-top: 1px solid rgb(150, 150, 150);
+  margin-top: 4vw;
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  #experiencePage {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .pageSection {
+    padding: 6vw 0;
+  }
+
+  .sectionContent p {
+    font-size: 0.85em;
+  }
+
+  .projectGallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .projectOverlay {
+    padding: 1rem;
+  }
+
+  .projectTitle {
+    font-size: 1rem;
+  }
+
+  .projectDesc {
+    font-size: 0.75rem;
+  }
+}

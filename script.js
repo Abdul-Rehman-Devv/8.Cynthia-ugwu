@@ -28,6 +28,10 @@ function firstPageAnim() {
     })
 }
 var timeOut;
+var circleXscale = 1
+var circleYscale = 1
+var circleFollowerInitialized = false
+
 function circleSkew() {
   var Xscale = 1
   var Yscale = 1
@@ -35,26 +39,28 @@ function circleSkew() {
   var Xprev = 0
   var Yprev = 0
   window.addEventListener('mousemove', function (dets) {
-  clearTimeout(timeOut)
-        Xscale = gsap.utils.clamp(0.8, 1.2, dets.clientX - Xprev)
-        Yscale = gsap.utils.clamp(0.8, 1.2, dets.clientY -Yprev)
+    clearTimeout(timeOut)
+    Xscale = gsap.utils.clamp(0.8, 1.2, dets.clientX - Xprev)
+    Yscale = gsap.utils.clamp(0.8, 1.2, dets.clientY - Yprev)
 
     Xprev = dets.clientX
     Yprev = dets.clientY
-    
-    circleMouseFollower(Xscale,Yscale)
-    timeOut=setTimeout(() => {
-      document.querySelector('#minicircle').style.transform =
-    `translate(${dets.clientX}px,${dets.clientY}px) scale(1,1)`
-      
-    }, 100);
 
-  });
+    circleXscale = Xscale
+    circleYscale = Yscale
+
+    timeOut = setTimeout(() => {
+      document.querySelector('#minicircle').style.transform =
+        `translate(${dets.clientX}px,${dets.clientY}px) scale(1,1)`
+    }, 100)
+  })
 }
-function circleMouseFollower(Xscale, Yscale) {
+function circleMouseFollower() {
+  if (circleFollowerInitialized) return
+  circleFollowerInitialized = true
   window.addEventListener('mousemove', function (dets) {
     document.querySelector('#minicircle').style.transform =
-    `translate(${dets.clientX}px,${dets.clientY}px) scale(${Xscale},${Yscale})`
+      `translate(${dets.clientX}px,${dets.clientY}px) scale(${circleXscale},${circleYscale})`
   })
 }
 circleSkew()

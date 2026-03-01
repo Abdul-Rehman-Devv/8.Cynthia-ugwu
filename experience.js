@@ -1,5 +1,9 @@
 // Cursor follower – fixed for full viewport
 var timeOut;
+var circleXscale = 1;
+var circleYscale = 1;
+var circleFollowerInitialized = false;
+
 function circleSkew() {
   var Xscale = 1;
   var Yscale = 1;
@@ -11,7 +15,8 @@ function circleSkew() {
     Yscale = gsap.utils.clamp(0.8, 1.2, dets.clientY - Yprev);
     Xprev = dets.clientX;
     Yprev = dets.clientY;
-    circleMouseFollower(Xscale, Yscale);
+    circleXscale = Xscale;
+    circleYscale = Yscale;
     timeOut = setTimeout(function () {
       var circle = document.querySelector('#minicircle');
       if (circle) {
@@ -21,15 +26,19 @@ function circleSkew() {
     }, 100);
   });
 }
-function circleMouseFollower(Xscale, Yscale) {
+
+function circleMouseFollower() {
+  if (circleFollowerInitialized) return;
+  circleFollowerInitialized = true;
   window.addEventListener('mousemove', function (dets) {
     var circle = document.querySelector('#minicircle');
     if (circle) {
       circle.style.transform =
-        'translate(' + dets.clientX + 'px,' + dets.clientY + 'px) scale(' + Xscale + ',' + Yscale + ')';
+        'translate(' + dets.clientX + 'px,' + dets.clientY + 'px) scale(' + circleXscale + ',' + circleYscale + ')';
     }
   });
 }
+
 if (document.querySelector('#minicircle')) {
   circleSkew();
   circleMouseFollower();
@@ -139,7 +148,10 @@ setInterval(updateFooterTime, 60000);
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
   modal.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      closeModal();
+      return;
+    }
     if (!modal.classList.contains('isOpen')) return;
     if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
     if (e.key === 'ArrowRight') goTo(currentIndex + 1);

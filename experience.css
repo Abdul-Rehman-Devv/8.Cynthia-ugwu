@@ -364,3 +364,18 @@
     font-size: 0.75rem;
   }
 }
+
+/* Remove any bottom border or underline on the navigation */
+#nav {
+  border-bottom: none !important;
+}
+#nav a {
+  text-decoration: none !important;
+}
+
+/* Increase font size for all h2 headings on this page */
+/* target both generic h2 and those already using the sectionLabel class */
+.sectionLabel,
+h2 {
+  font-size: 2rem !important;
+}
